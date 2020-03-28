@@ -84,4 +84,27 @@ abstract class Model
 
     }
 
+    public function save()
+    {
+
+        if (self::findById($this->id)){
+
+            self::update();
+
+        } else {
+
+            self::insert();
+
+        }
+
+
+    }
+
+    public function delete($id)
+    {
+        $db = new Db();
+        $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
+        $db->execute($sql, [':id'=>$id]);
+    }
+
 }
