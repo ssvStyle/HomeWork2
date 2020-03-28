@@ -30,6 +30,7 @@ abstract class Model
     }
 
     public function insert()
+
     {
         $fields = get_object_vars($this);
 
