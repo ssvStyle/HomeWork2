@@ -10,7 +10,9 @@ $article->title = 'Новая запись';
 $article->content = 'Опять что-то новенькое)))';
 
 
-$article->insert();die;
+$article->insert();
+
+var_dump($article);die;
 
 $news = new \App\Models\Article();
 $data = $news->findLast(3);

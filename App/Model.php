@@ -31,11 +31,29 @@ abstract class Model
 
     public function insert()
     {
+        $fields = get_object_vars($this);
 
-        echo $sql = 'INSERT INTO ' . static::TABLE . ' 
-        () 
+        $cols = [];
+        $data = [];
+
+        foreach ($fields as $name => $value) {
+            if ('id' == $name){
+                continue;
+            }
+
+            $cols[] = $name;
+            $data[':' . $name] = $value;
+
+        }
+
+        $sql = 'INSERT INTO ' . static::TABLE . ' 
+        ('.implode(',', $cols).') 
         VALUES 
-        ()';
+        ('.implode(',', array_keys($data)).')';
+
+        $db = new Db();
+        $db->execute($sql, $data);
+
     }
 
 }
