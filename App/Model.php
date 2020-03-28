@@ -29,4 +29,13 @@ abstract class Model
         return $result[0];
     }
 
+    public function insert()
+    {
+
+        echo $sql = 'INSERT INTO ' . static::TABLE . ' 
+        () 
+        VALUES 
+        ()';
+    }
+
 }
