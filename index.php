@@ -4,15 +4,15 @@ include __DIR__ . '/autoload.php';
 
 $db = new App\Db();
 
-$article =new \App\Models\Article();
+$article = \App\Models\Article::findById(4);
 
-$article->title = 'Новая запись';
-$article->content = 'Опять что-то новенькое)))';
+//$article->title = 'В Германии нашли уникальный бивень мамонта';
+//$article->content = 'Необычность находки в том, что практически полностью сохранившиеся бивни мамонта такой длины – большая редкость. На юге Германии вблизи баварского города Регенсбург археологи обнаружили бивень мамонта длиной почти 2,5 метра. Об этом накануне сообщило земельное ведомство по охране памятников.';
 
 
-$article->insert();
 
-var_dump($article);die;
+//$article->update();die;
+
 
 $news = new \App\Models\Article();
 $data = $news->findLast(3);

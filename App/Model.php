@@ -59,4 +59,29 @@ abstract class Model
 
     }
 
+    public function update()
+
+    {
+        $fields = get_object_vars($this);
+        $cols = [];
+        $data = [];
+
+        foreach ($fields as $name => $value) {
+            if ('id' == $name){
+                continue;
+            }
+
+            $cols[] = $name . '=' . ':'  . $name;
+            $data[':' . $name] = $value;
+
+        }
+
+        $sql = 'UPDATE ' . static::TABLE . ' SET  
+        '.implode(',', $cols).' WHERE id=' . $fields['id'];
+
+        $db = new Db();
+        $db->execute($sql, $data);
+
+    }
+
 }
