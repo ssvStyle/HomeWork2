@@ -99,6 +99,7 @@
                 <div class="col">
                     <h2><?= $newsObj->title ?></h2>
                     <p><?= $newsObj->content; ?></p>
+                    Автор: <?= $newsObj->author->name; ?>
                 </div>
 
             <?php } else { ?>

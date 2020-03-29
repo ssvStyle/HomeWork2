@@ -11,7 +11,7 @@ class Article extends Model
 
     public $title;
     public $content;
-    public $author;
+    public $author_id;
 
 
     public function findLast($limit)
@@ -20,4 +20,12 @@ class Article extends Model
         $sql = 'SELECT * FROM news ORDER BY id DESC LIMIT 3';
         return $db->query($sql, [], self::class);
     }
+
+    public function __get($name)
+    {
+        if ($name == 'author'){
+         return Author::findById($this->author_id) ?: new Author();
+        }
+    }
+
 }

@@ -97,6 +97,7 @@
             <div class="col-md-4">
                 <h2><?= $newsObj->title ?></h2>
                 <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>
+                Автор: <?= $newsObj->author->name; ?>
                 <p><a class="btn btn-secondary" href="article.php?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
             </div>
         <?php endforeach; ?>

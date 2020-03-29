@@ -2,13 +2,18 @@
 
 include __DIR__ . '/autoload.php';
 
+use App\Models\Article;
+
 $db = new App\Db();
 
-$article = new \App\Models\Article;
-
-$news = new \App\Models\Article();
+$article = new Article;
 
 $view = new \App\View();
-$view->articles = $news->findLast(3);
+$view->articles = $article->findLast(3);
 
 $view->display(__DIR__ . '/templates/index.php');
+
+foreach ($view as $key => $value) {
+    var_dump($key, $value);
+    echo "\n";
+}
