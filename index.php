@@ -7,6 +7,8 @@ $db = new App\Db();
 $article = new \App\Models\Article;
 
 $news = new \App\Models\Article();
-$data = $news->findLast(3);
 
-include __DIR__ . '/templates/index.php';
+$view = new \App\View();
+$view->articles = $news->findLast(3);
+
+$view->display(__DIR__ . '/templates/index.php');

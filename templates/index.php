@@ -1,5 +1,3 @@
-<?php
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -95,7 +93,7 @@
         <!-- Example row of columns -->
         <div class="row ">
 
-        <?php foreach ($data as $newsObj) :?>
+        <?php foreach ($this->articles as $newsObj) :?>
             <div class="col-md-4">
                 <h2><?= $newsObj->title ?></h2>
                 <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>

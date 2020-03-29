@@ -11,6 +11,7 @@ class Article extends Model
 
     public $title;
     public $content;
+    public $author;
 
 
     public function findLast($limit)
