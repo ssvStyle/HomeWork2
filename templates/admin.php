@@ -81,33 +81,46 @@
 </nav>
 
 <main role="main">
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--<div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
-    </div>-->
-
     <div class="container mt-5 pt-5">
-        <!-- Example row of columns -->
-        <div class="row ">
 
-        <?php foreach ($data as $newsObj) :?>
-            <div class="col-md-4">
-                <h2><?= $newsObj->title ?></h2>
-                <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>
-                <p><a class="btn btn-secondary" href="article.php?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
+
+        <form action="admin.php" method="post">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Заголовок</label>
+                <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Заголовок" value="<?= $article->title ?? '' ?>">
             </div>
-        <?php endforeach; ?>
-
-
-
-        </div>
-
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Основной текст</label>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Основной текст"><?= $article->content ?? '' ?></textarea>
+            </div>
+            <input type="hidden" name="id" value="<?= $article->id ?? '' ?>">
+            <button type="submit" name="add" class="btn btn-primary btn-lg btn-block">Добавить</button>
+        </form>
         <hr>
+
+
+            <?php foreach ($allNews as $article) :?>
+
+
+                <div class="row-md-8 text-light bg-dark"><?= $article->title ?>   <div class="float-right ml-5 "><a class="text-danger" href="admin.php?delete=<?= $article->id ?>">Удалить</a></div><div class="float-right"><a class="text-info" href="admin.php?edit=<?= $article->id ?>">Редактировать</a></div></div>
+                <p class="text-muted"></p>
+            <?php endforeach; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div> <!-- /container -->
 
