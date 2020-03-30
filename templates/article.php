@@ -56,10 +56,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin.php">Admin</a>
+                <a class="nav-link" href="/admin/page">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -82,24 +82,15 @@
 
 <main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--<div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
-    </div>-->
-
     <div class="container mt-5 pt-5">
         <!-- Example row of columns -->
         <div class="row ">
-            <?php if ($newsObj) {?>
+            <?php if ($this->newsObj) {?>
 
                 <div class="col">
-                    <h2><?= $newsObj->title ?></h2>
-                    <p><?= $newsObj->content; ?></p>
-                    Автор: <?= $newsObj->author->name; ?>
+                    <h2><?= $this->newsObj->title ?></h2>
+                    <p><?= $this->newsObj->content; ?></p>
+                    Автор: <?= $this->newsObj->author->name; ?>
                 </div>
 
             <?php } else { ?>

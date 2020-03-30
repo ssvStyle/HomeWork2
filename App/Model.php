@@ -54,7 +54,6 @@ abstract class Model
 
         $db = new Db();
         $db->execute($sql, $data);
-
         $this->id = $db->getLastId();
 
     }
@@ -104,7 +103,7 @@ abstract class Model
     {
         $db = new Db();
         $sql = 'DELETE FROM ' . static::TABLE . ' WHERE id=:id';
-        $db->execute($sql, [':id'=>$id]);
+        var_dump($db->execute($sql, [':id'=>$id]));
     }
 
 }

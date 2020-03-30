@@ -1,5 +1,3 @@
-<?php
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -59,7 +57,7 @@
                 <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin/page">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -81,31 +79,27 @@
 </nav>
 
 <main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <!--<div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>-->
+
     <div class="container mt-5 pt-5">
+        <!-- Example row of columns -->
+        <div class="row ">
+
+            <h1>Forbidden 403</h1>
 
 
-        <form action="/admin/save" method="post">
-            <div class="form-group">
-                <label for="formGroupExampleInput">Заголовок</label>
-                <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Заголовок" value="<?= $this->article ? $this->article->title : '' ?>">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Основной текст</label>
-                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Основной текст"><?= $this->article ? $this->article->content : '' ?></textarea>
-            </div>
-            <input type="hidden" name="id" value="<?= $this->article ? $this->article->id : '' ?>">
-            <button type="submit" name="add" class="btn btn-primary btn-lg btn-block">Добавить</button>
-        </form>
+
+        </div>
+
         <hr>
-            <?php foreach ($this->allNews as $article) :?>
-
-
-                <div class="row-md-8 text-light bg-dark"><?= $article->title ?>   <div class="float-right ml-5 "><a class="text-danger" href="/admin/delete/?id=<?= $article->id ?>">Удалить</a></div><div class="float-right"><a class="text-info" href="/admin/edit/?id=<?= $article->id ?>">Редактировать</a></div></div>
-                <p class="text-muted"></p>
-            <?php endforeach; ?>
-
-
-
 
     </div> <!-- /container -->
 

@@ -54,10 +54,10 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="admin.php">Admin</a>
+                <a class="nav-link" href="/admin/page">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -98,7 +98,7 @@
                 <h2><?= $newsObj->title ?></h2>
                 <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>
                 Автор: <?= $newsObj->author->name; ?>
-                <p><a class="btn btn-secondary" href="article.php?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="index/article/?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
             </div>
         <?php endforeach; ?>
 
