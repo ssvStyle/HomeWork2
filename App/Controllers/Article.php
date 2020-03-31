@@ -4,13 +4,13 @@ namespace App\Controllers;
 
 use App\Controller;
 
-class Article extends Controller
+class IndexArticle extends Controller
 {
 
     public function handle()
     {
-        $newsObj = \App\Models\Article::findById($_GET['id']);
-        include __DIR__ . '/../../templates/article.php';
+        $this->view->newsObj = \App\Models\Article::findById($_GET['id']);
+        $this->view->display(__DIR__ . '/../../templates/article.php');
     }
 
 }
