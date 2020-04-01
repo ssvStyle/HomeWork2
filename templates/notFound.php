@@ -57,7 +57,7 @@
                 <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin/page">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -80,39 +80,35 @@
 
 <main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--<div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
-    </div>-->
-
     <div class="container mt-5 pt-5">
         <!-- Example row of columns -->
-        <div class="row ">
 
-        <?php foreach ($this->articles as $newsObj) :?>
-            <div class="col-md-4">
-                <h2><?= $newsObj->title ?></h2>
-                <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>
-                Автор: <?= $newsObj->author->name; ?>
-                <p><a class="btn btn-secondary" href="/article/show/?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="error-template pt-5">
+                        <h1>
+                            Oops!</h1>
+                        <h2>
+                            404 Not Found</h2>
+                        <div class="error-details">
+                            Sorry, an error has occured, Requested page not found!
+                        </div>
+                        <div class="error-actions">
+                            <a href="/index" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+                                Take Me Home </a><a href="#" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        <?php endforeach; ?>
-
-
-
         </div>
 
-        <hr>
 
     </div> <!-- /container -->
 
 </main>
 
-<footer class="container">
+<footer class="container fixed-bottom">
     <p>&copy; Company 2017-2019</p>
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

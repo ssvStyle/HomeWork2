@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 use App\Controller;
 
-class AdminPage extends Controller
+class Admin extends Controller
 {
 
     public function handle()

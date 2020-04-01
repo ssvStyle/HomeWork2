@@ -57,7 +57,7 @@
                 <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Admin</a>
+                <a class="nav-link" href="/admin/page">Admin</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -80,27 +80,12 @@
 
 <main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <!--<div class="jumbotron">
-        <div class="container">
-            <h1 class="display-3">Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-        </div>
-    </div>-->
-
     <div class="container mt-5 pt-5">
         <!-- Example row of columns -->
         <div class="row ">
 
-        <?php foreach ($this->articles as $newsObj) :?>
-            <div class="col-md-4">
-                <h2><?= $newsObj->title ?></h2>
-                <p><?= mb_substr($newsObj->content, 0, 200 ) . ' ...'; ?></p>
-                Автор: <?= $newsObj->author->name; ?>
-                <p><a class="btn btn-secondary" href="/article/show/?id=<?= $newsObj->id ?>" role="button">View details &raquo;</a></p>
-            </div>
-        <?php endforeach; ?>
+            <h1>Ошибка:</h1>
+            <p><?= $this->error ?></p>
 
 
 

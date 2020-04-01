@@ -26,4 +26,15 @@ class Index extends Controller
         $this->view->display(__DIR__ . '/../../templates/article.php');
     }
 
+    public function error($errorMessage)
+    {
+        $this->view->error = $errorMessage;
+        $this->view->display(__DIR__ . '/../../templates/error.php');
+    }
+
+    public function notFound()
+    {
+        $this->view->display(__DIR__ . '/../../templates/notFound.php');
+    }
+
 }

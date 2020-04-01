@@ -9,45 +9,75 @@ $parts = explode('/', $uri);//разбиваем по слешу
 
 $parts = array_diff($parts, ['']);
 
-if (preg_match_all('~[?]\w*[=]\w*~', end($parts))){
-    array_pop($parts);
-}//обрезаем get запрос если он есть
+$parts = $parts ?: ['index'];
 
-function uriArrTooClassName($parts)
-{
-    $name = '';
 
-    foreach ($parts as $value){
+
+
+try {
+    if (preg_match_all('~[?]\w*[=]\w*~', end($parts))){
+        array_pop($parts);
+    }//обрезаем get запрос если он есть
+
+    function uriArrTooClassName($parts)
+    {
+        $name = '';
+
+        foreach ($parts as $value){
             $name = $name . ucfirst($value);
-    }
-    return $name;
-}
-
-function fileClassAndMethodCheck($className, $methodName)
-{
-    $controllerFile = __DIR__ . '/../App/Controllers/' . $className . '.php';
-    $className = '\App\Controllers\\' . $className;
-
-    if (file_exists($controllerFile) && class_exists($className)) {
-        $ctrl = new $className();
-        if (method_exists($ctrl, $methodName)) {
-            $ctrl->action($methodName);
-        } else {
-            $ctrl();
         }
-    } else {
-        $ctrl = new \App\Controllers\Index();
-        $ctrl();
+        return $name;
     }
 
+    function fileClassAndMethodCheck($className, $methodName)
+    {
+        $controllerFile = __DIR__ . '/../App/Controllers/' . $className . '.php';
+        $className = '\App\Controllers\\' . $className;
+
+        if (file_exists($controllerFile) && class_exists($className)) {
+            $ctrl = new $className();
+                if (method_exists($ctrl, $methodName)) {
+                    $ctrl->action($methodName);
+                } else {
+                    $ctrl();
+                }
+
+        } else {
+            throw new \App\NotFound($className . '|' . $methodName);
+        }
+
+    }
+
+    $action = end($parts);
+
+    if (count($parts)>1){
+        array_pop($parts);
+    }
+
+    $controllerWithoutAction = uriArrTooClassName($parts);
+
+    fileClassAndMethodCheck($controllerWithoutAction, $action);
+
+} catch (\App\DbExeception $error){
+
+    $index = new \App\Controllers\Index();
+    $index->error($error->getMessage());
+
+} catch (\App\NotFound $error){
+
+    $index = new \App\Controllers\Index();
+    $log = new App\Loger($error->getFile(), $error->getLine(), $error->getMessage());
+    $log->add();
+
+
+    $index->notFound();
+
 }
 
-$action = end($parts);
 
-if (count($parts)>1){
-    array_pop($parts);
-}
 
-$controllerWithoutAction = uriArrTooClassName($parts);
 
-fileClassAndMethodCheck($controllerWithoutAction, $action);
+//$ex = new \App\DbExeception('Что-то сломалось');
+//echo '<pre>';
+//var_dump($ex->getMessage());
+//echo  '</pre>';

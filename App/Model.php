@@ -24,7 +24,7 @@ abstract class Model
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
         $result = $db->query($sql, [':id'=>$id],static::class);
         if ($result == null){
-            return false;
+            throw new \App\NotFound($id);
         }
         return $result[0];
     }
