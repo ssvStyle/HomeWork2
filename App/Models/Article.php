@@ -11,7 +11,7 @@ class Article extends Model
 
     public $title;
     public $content;
-    public $author_id = 0;
+    public $author_id;
 
 
     public function findLast($limit)
@@ -23,8 +23,11 @@ class Article extends Model
 
     public function __get($name)
     {
-        if ($name == 'author'){
-         return Author::findById($this->author_id) ?: new Author();
+        if ($name == 'author') {
+            if ($this->author_id){
+                return Author::findById($this->author_id) ?: new Author();
+            }
+            return new Author();
         }
     }
 

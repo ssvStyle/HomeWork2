@@ -3,6 +3,8 @@
 namespace App;
 
 
+use Psr\Log\LogLevel;
+
 abstract class Model
 {
 
@@ -23,7 +25,9 @@ abstract class Model
         $db = new Db();
         $sql = 'SELECT * FROM ' . static::TABLE . ' WHERE id=:id';
         $result = $db->query($sql, [':id'=>$id],static::class);
-        if ($result == null){
+        if ($result == null) {
+            $loger = new Loger();
+            $loger->log(LogLevel::ALERT, 'ошибка запроса {sql}', ['sql' => $sql]);
             throw new \App\NotFound($id);
         }
         return $result[0];
@@ -38,7 +42,7 @@ abstract class Model
         $data = [];
 
         foreach ($fields as $name => $value) {
-            if ('id' == $name){
+            if ('id' == $name) {
                 continue;
             }
 
@@ -66,7 +70,7 @@ abstract class Model
         $data = [];
 
         foreach ($fields as $name => $value) {
-            if ('id' == $name){
+            if ('id' == $name) {
                 continue;
             }
 
